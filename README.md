@@ -30,9 +30,9 @@ db.collection.find(opt).pretty(): Añadido para hacer mas presentables los resul
 ## Conteo de datos 
 Son para determinar el numero de documentos en una coleccion
 
-db.collection.estimatedDocumentCount(): Cuenta el estimado mas proximo al numero de documentos segun su metadata
+db.collection.estimatedDocumentCount(): Cuenta el estimado mas proximo al numero de documentos segun su metadata(El conteo es mas rapido pero aproximado)
 
-db.collection.countDocuments(opt):Cuenta los documentos que cumplan con el criterio definido en las opciones (opt).
+db.collection.countDocuments(opt):Cuenta los documentos que cumplan con el criterio definido en las opciones (opt) (El conteo es mas preciso pero mas lento).
 
 ## CRUD
 
@@ -40,4 +40,6 @@ C: create (Crear un dato e insertarlo en la base de datos)
 R: Read (Leer un dato, mostrarlo al cliente)
 U: Update: ( Actualizar un dato, cambiar su informaciòn)
 D: Delete (Borrar un dato)
+
+25min
 
