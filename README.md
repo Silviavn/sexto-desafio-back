@@ -18,16 +18,21 @@ db.collection.drop: Elimina la base de datos posicionada
 
 db.collection insertOne(doc): Agrega un nuevo documento a la coleccion seleccionada
 
-db.collection.insertMany(docs):Agrega multiples documentos a la coleccion seleccionada(dado un arreglo de documentos)
+db.collection.insertMany(docs):Agrega multiples documentos a la coleccion seleccionada(dado un arreglo de documentos (Atraves de un array))
 
-db.collection.findOne(opt):Busca un elemento que cumpla con los criterios de busqueda (opt), devuelve el primer documento que cumpla con dicho criterio.
+db.collection.findOne(opt):Busca un elemento que cumpla con los criterios de busqueda(Una sola y la primera que encuentre) (opt), devuelve el primer documento que cumpla con dicho criterio.
 
 db.collection.find(opt): Devuelve todos los documentos que cumplan con dicho criterio
 
 db.collection.find(opt).pretty(): Añadido para hacer mas presentables los resultados de un find().
 
 
+## Conteo de datos 
+Son para determinar el numero de documentos en una coleccion
 
+db.collection.estimatedDocumentCount(): Cuenta el estimado mas proximo al numero de documentos segun su metadata
+
+db.collection.countDocuments(opt):Cuenta los documentos que cumplan con el criterio definido en las opciones (opt).
 
 ## CRUD
 
