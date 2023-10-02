@@ -1,26 +1,43 @@
-import { Router } from "express"
-import CartManager from "../controllers/CartManager.js"
+import { Router } from 'express' 
+import { cartsModel } from '../models/carts.model.js'
 
-const cartRouter = Router()
-const carts = new CartManager()
+const router = Router();
 
 
-cartRouter.post("/", async (req,res) =>{
-    res.send(await carts.addCarts())
-})
+router.get('/', async (req, res) => { 
+    try {
+        let carts = await cartsModel.find();
+        res.send({ result: "success", payload: carts });
+    } catch (error) {
+        console.log(error);
+    }
+});
 
-cartRouter.get("/", async (req,res)=>{
-    res.send(await carts.getCarts())
-})
+router.post('/', async (req, res) => {
+    let { description, quantity, total } = req.body;
+    if (!description || !quantity || !total) {
+        res.send({ status: "error", error: "Missing body params" });
+    }
+    let result = await cartsModel.create({ description, quantity, total });
+    res.send({ result: "success", payload: result });
+});
 
-cartRouter.get("/:id", async (req,res)=>{
-    res.send(await carts.getCartById(req.params.id))
-})
+router.put('/:id_cart', async (req, res) => {
+    let { id_cart } = req.params;
 
-cartRouter.post("/:cid/products/:pid", async (req,res) => {
-    let cartId = req.params.cid
-    let prodId = req.params.pid
-    res.send(await carts.addProductInCart(cartId, prodId))
-})
+    let cartsToReplace = req.body;
+    if (!cartsToReplace.description || !cartsToReplace.quantity || !cartsToReplace.total) {
+        res.send({ status: "error", error: "Missing body params" });
+    }
+    let result = await cartsModel.updateOne({ _id: id_cart }, cartsToReplace);
+    res.send({ result: "success", payload: result });
+});
 
-export default cartRouter
+
+router.delete('/:id_cart', async (req, res) => {
+    let { id_cart } = req.params;
+    let result = await cartsModel.deleteOne({ _id: id_cart });
+    res.send({ result: "success", payload: result });
+});
+
+export default router
