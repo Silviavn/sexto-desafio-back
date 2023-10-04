@@ -25,13 +25,13 @@ const httpServer = app.listen(PORT, () => {
     console.log(`Servidor Express Puerto ${PORT}`)
 })
 //-----------------------------------------------------------------------------------//
-//-------------------------------------Mongoose----------------------------------------------------------//
-mongoose.connect("mongodb+srv://bastsrojas:ptLuitYCTl6wE4jB@cluster0.wx37dwm.mongodb.net/?retryWrites=true&w=majority")
+//-------------------------------------Mongoose que establese la coneccion----------------------------------------------------------//
+mongoose.connect("mongodb+srv://SilviaVN:Ma.2405@cluster0.k4o0wdx.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp")
 .then(()=>{
     console.log("Conectado a la base de datos")
 })
 .catch(error => {
-    console.error("Error al conectarse a la base de datos, error"+error)
+    console.error("Error al conectarse a la base de datos"+error)
 })
 //------Rutas para probar CRUD con POSTMAN de carts, messages y products-----//
 app.use("/api/carts", cartsRouter)

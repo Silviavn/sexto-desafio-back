@@ -43,3 +43,9 @@ D: Delete (Borrar un dato)
 
 25min
 
+## instalacion
+
+npm i multer mongoose
+npm i mongoose
+
+01:35:33 moongose coder
