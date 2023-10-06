@@ -2,12 +2,10 @@ import { Router } from 'express'
 import { cartsModel } from '../models/carts.model.js'
 
 const router = Router();
-
-
 router.get('/', async (req, res) => { 
     try {
         let carts = await cartsModel.find();
-        res.send({ result: "success", payload: carts });
+        res.send({ result: "éxito", payload: carts });
     } catch (error) {
         console.log(error);
     }
@@ -16,10 +14,10 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     let { description, quantity, total } = req.body;
     if (!description || !quantity || !total) {
-        res.send({ status: "error", error: "Missing body params" });
+        res.send({ status: "error", error: "Parámetros del cuerpo faltantes" });
     }
     let result = await cartsModel.create({ description, quantity, total });
-    res.send({ result: "success", payload: result });
+    res.send({ result: "éxito", payload: result });
 });
 
 router.put('/:id_cart', async (req, res) => {
@@ -27,17 +25,17 @@ router.put('/:id_cart', async (req, res) => {
 
     let cartsToReplace = req.body;
     if (!cartsToReplace.description || !cartsToReplace.quantity || !cartsToReplace.total) {
-        res.send({ status: "error", error: "Missing body params" });
+        res.send({ status: "error", error: "Parámetros del cuerpo faltantes" });
     }
     let result = await cartsModel.updateOne({ _id: id_cart }, cartsToReplace);
-    res.send({ result: "success", payload: result });
+    res.send({ result: "éxito", payload: result });
 });
 
 
 router.delete('/:id_cart', async (req, res) => {
     let { id_cart } = req.params;
     let result = await cartsModel.deleteOne({ _id: id_cart });
-    res.send({ result: "success", payload: result });
+    res.send({ result: "éxito", payload: result });
 });
 
 export default router

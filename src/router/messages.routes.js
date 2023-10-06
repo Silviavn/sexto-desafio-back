@@ -7,7 +7,7 @@ const router = Router();
 router.get('/', async (req, res) => { 
     try {
         let messages = await messagesModel.find();
-        res.send({ result: "success", payload: messages });
+        res.send({ result: "éxito", payload: messages });
     } catch (error) {
         console.log(error);
     }
@@ -16,10 +16,10 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     let { user, message } = req.body;
     if (!user || !message) {
-        res.send({ status: "error", error: "Missing body params" });
+        res.send({ status: "error", error: "Parámetros del cuerpo faltantes" });
     }
     let result = await messagesModel.create({ user, message });
-    res.send({ result: "success", payload: result });
+    res.send({ result: "éxito", payload: result });
 });
 
 router.put('/:id_msg', async (req, res) => {
@@ -27,17 +27,17 @@ router.put('/:id_msg', async (req, res) => {
 
     let messagesToReplace = req.body;
     if (!messagesToReplace.user || !messagesToReplace.message) {
-        res.send({ status: "error", error: "Missing body params" });
+        res.send({ status: "error", error: "Parámetros del cuerpo faltantes" });
     }
     let result = await messagesModel.updateOne({ _id: id_msg }, messagesToReplace);
-    res.send({ result: "success", payload: result });
+    res.send({ result: "éxito", payload: result });
 });
 
 
 router.delete('/:id_msg', async (req, res) => {
     let { id_msg } = req.params;
     let result = await messagesModel.deleteOne({ _id: id_msg });
-    res.send({ result: "success", payload: result });
+    res.send({ result: "éxito", payload: result });
 });
 
 export default router

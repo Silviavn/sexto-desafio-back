@@ -3,10 +3,10 @@ import { uploader } from "../controllers/multer.js";
 
 const router = Router();
 
-let products = []; // Change variable name to 'products'
+let products = []; 
 
 router.get("/", (req, res) => {
-  res.send({ status: "success", payload: products }); // Change 'prod' to 'products'
+  res.send({ status: "éxito", payload: products }); 
 });
 
 router.post("/upload", uploader.single("file"), (req, res) => {
@@ -17,7 +17,7 @@ router.post("/upload", uploader.single("file"), (req, res) => {
   let prod = req.body;
   prod.profile = req.file.path;
   products.push(prod);
-  res.send({ status: "success", message: "Imagen Guardada" });
+  res.send({ status: "éxito", message: "Img Guardada" });
 });
 
 export default router;
