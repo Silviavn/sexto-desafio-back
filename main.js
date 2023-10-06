@@ -28,7 +28,7 @@ const httpServer = app.listen(PORT, () => {
 //-------------------------------------Mongoose que establese la coneccion----------------------------------------------------------//
 mongoose.connect("mongodb+srv://SilviaVN:Ma.2405@cluster0.k4o0wdx.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp")
 .then(()=>{
-    console.log("Conectado a la base de datos")
+    console.log("Hemos podido conectarte a la base de datos")
 })
 .catch(error => {
     console.error("Error al conectarse a la base de datos"+error)

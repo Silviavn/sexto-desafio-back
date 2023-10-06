@@ -47,5 +47,6 @@ D: Delete (Borrar un dato)
 
 npm i multer mongoose
 npm i mongoose
+npm install express express-handlebars socket.io
 
 01:35:33 moongose coder
