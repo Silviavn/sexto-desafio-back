@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     let { description, image, price, stock } = req.body;
     if (!description || !image || !price || !stock) {
-        res.send({ status: "error", error: "Missing body params" });
+        res.send({ status: "error", error: "Parámetros del cuerpo faltantes" });
     }
     let result = await productsModel.create({ description, image, price, stock });
     res.send({ result: "éxito", payload: result });
@@ -27,7 +27,7 @@ router.put('/:id_prod', async (req, res) => {
 
     let productsToReplace = req.body;
     if (!productsToReplace.description || !productsToReplace.image || !productsToReplace.price || !productsToReplace.stock) {
-        res.send({ status: "error", error: "Missing body params" });
+        res.send({ status: "error", error: "Parámetros del cuerpo faltantes" });
     }
     let result = await productsModel.updateOne({ _id: id_prod }, productsToReplace);
     res.send({ result: "éxito", payload: result });
